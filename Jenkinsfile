@@ -1,6 +1,7 @@
+node (slave-build-node){
 pipeline {
-   agent {
-   label slave-build-node
+//   agent {
+//   label build-n
    }
   stages {
   
@@ -30,3 +31,4 @@ pipeline {
        
      }
     }
+}
