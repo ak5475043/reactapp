@@ -1,6 +1,6 @@
 pipeline {
    agent {
-   lable slave-build-node
+   label slave-build-node
    }
   stages {
   
