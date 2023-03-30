@@ -1,7 +1,6 @@
 
 pipeline {
-  agent none
-  agent {label slave-build-node}
+  agent any
   stages {
   
     stage('Install Dependencies') {
