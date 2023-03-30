@@ -2,7 +2,7 @@ node (slave-build-node){
 pipeline {
 //   agent {
 //   label build-n
-   }
+//   }
   stages {
   
     stage('Install Dependencies') {
