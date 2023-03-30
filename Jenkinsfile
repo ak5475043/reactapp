@@ -23,7 +23,7 @@ pipeline {
        
     stage('Deploy application') {
       steps {
-         sh 'echo "deploying application..."'
+         sh 'sudo cp -r * /var/www/react'
          }
        }
        
