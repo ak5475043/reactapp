@@ -1,9 +1,7 @@
 
 pipeline {
   agent { node { label 'slave-build-node' } }
-  options {
-        timeout(time: 1, unit: 'SECONDS')
-    }
+  
   stages {
   
     stage('Install Dependencies') {
