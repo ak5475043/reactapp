@@ -1,8 +1,6 @@
-node (slave-build-node){
+
 pipeline {
-//   agent {
-//   label build-n
-//   }
+  agent any
   stages {
   
     stage('Install Dependencies') {
@@ -31,4 +29,4 @@ pipeline {
        
      }
     }
-}
+
