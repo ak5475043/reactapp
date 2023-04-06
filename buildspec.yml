@@ -1,10 +1,10 @@
 version: 0.2
 
 phases:
-  dependencies:
+  pre_build:
     commands:
-    - sh 'npm install'
+      - npm install
     
   build:
     commands:
-    - sh 'npm run build'
+    - npm run build
