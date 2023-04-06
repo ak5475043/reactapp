@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  dependencies:
+    commands:
+    - sh 'npm install'
+    
+  build:
+    commands:
+    - sh 'npm run build'
