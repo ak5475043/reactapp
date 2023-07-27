@@ -1,15 +1,17 @@
 pipeline {
     agent any
+    environment {
+        // Access the webhook payload using the environment variable PAYLOAD
+        PAYLOAD = "${JSON.stringify(env.BODY)}"
+        // Extract the repository name from the payload using a Groovy expression
+        REPO_NAME = "${PAYLOAD.split('/')[5].split('.')[0]}"
+    }
     stages {
-        stage('Capture Webhook Payload') {
+        stage('Build') {
             steps {
-                script {
-                    // Capture the raw HTTP request body (payload)
-                    def payloadString = env.BODY
-
-                    // Print the payload to the Jenkins build log
-                    echo "Webhook Payload:\n${payloadString}"
-                }
+                // Fetch the repository
+                git branch: 'main', url: "https://github.com/your-username/${REPO_NAME}.git"
+                // Add build steps here
             }
         }
     }
