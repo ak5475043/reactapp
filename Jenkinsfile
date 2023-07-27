@@ -1,32 +1,18 @@
-//
 pipeline {
-  agent { node { label 'slave-build-node' } }
-  stages {
-  
-    stage('Install Dependencies') {
-      steps {
-         sh 'npm install'
-         }
-      }
-      
-    stage('Test') {
-      steps {
-         sh 'echo "testing application..."'
-         }
-      }
-      
-    stage('build') {
-      steps {
-         sh 'npm run build'
-         }
-       }
-       
-    stage('Deploy application') {
-      steps {
-         sh 'sudo cp -r * /var/www/react'
-         }
-       }
-       
-     }
+    agent any
+    stages {
+        stage('Capture Webhook Payload') {
+            steps {
+                script {
+                    // Capture the raw HTTP request body (payload)
+                    def payloadString = env.BODY
+
+                    // Print the payload to the Jenkins build log
+                    echo "Webhook Payload:\n${payloadString}"
+                }
+            }
+        }
     }
+}
+
 
