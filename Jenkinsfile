@@ -1,23 +1,34 @@
+
 pipeline {
-    agent any
-    environment {
-        // Assuming the payload is a JSON object with a key named 'repository'
-        PAYLOAD = "${JSON.stringify(env.BODY)}"
-        // Extract the repository URL from the payload using a Groovy expression
-        REPO_URL = "${PAYLOAD['repository']['url']}"
-        // Extract the repository name from the URL
-        REPO_NAME = "${REPO_URL.split('/')[-1].split('\\.')[0]}"
+  agent { node { label 'slave-build-node' } }
+  stages {
+  
+    stage('Install Dependencies') {
+      steps {
+         sh 'npm install'
+         }
+      }
+      
+    stage('Test') {
+      steps {
+         sh 'echo "testing application..."'
+         }
+      }
+      
+    stage('build') {
+      steps {
+         sh 'npm run build'
+         }
+       }
+       
+    stage('Deploy application') {
+      steps {
+         sh 'sudo cp -r * /var/www/react'
+         }
+       }
+       
+     }
     }
-    stages {
-        stage('Build') {
-            steps {
-                // Fetch the repository
-                git branch: 'main', url: "${REPO_URL}"
-                // Add build steps here (e.g., compiling, testing, etc.)
-            }
-        }
-    }
-}
 
 
 
