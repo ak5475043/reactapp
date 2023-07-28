@@ -1,4 +1,4 @@
-
+//
 pipeline {
   agent { node { label 'slave-build-node' } }
   //agent any
