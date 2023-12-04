@@ -7,7 +7,8 @@ pipeline {
     stage('Install Dependencies') {
       steps {
          //sh 'npm install'
-         sh 'sudo cp -r * /home/webexpert/jenkins_test'
+         //sh 'sudo cp -r * /home/webexpert/jenkins_test'
+         sh 'yarn'
          }
       }
       
