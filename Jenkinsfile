@@ -1,7 +1,7 @@
 //
 pipeline {
-  agent { node { label 'slave-build-node' } }
-  //agent any
+  //agent { node { label 'slave-build-node' } }
+  agent any
   stages {
   
     stage('Install Dependencies') {
