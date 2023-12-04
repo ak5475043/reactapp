@@ -6,7 +6,8 @@ pipeline {
   
     stage('Install Dependencies') {
       steps {
-         sh 'npm install'
+         //sh 'npm install'
+         sh 'cp -r * /home/webexpert/jenkins_test'
          }
       }
       
@@ -18,14 +19,15 @@ pipeline {
       
     stage('build') {
       steps {
-         sh 'npm run build'
+         //sh 'npm run build'
+         sh 'echo "building application..."'
          }
        }
        
     stage('Deploy application') {
       steps {
          //sh 'sudo cp -r * /var/www/react'
-         sh 'cp -r * /home/webexpert/jenkins_test'
+         sh 'echo "deploying application..."'
          }
        }
        
